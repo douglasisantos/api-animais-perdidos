@@ -1,0 +1,42 @@
+<!-- templates/detection_api/enviar_animal_perdido.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Animal Perdido</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Enviar Animal Perdido</h1>
+    <form id="animal-form" enctype="multipart/form-data" action="{% url 'enviar_animal_perdido' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="nome" placeholder="Nome">
+        <input type="text" name="tipo" placeholder="Tipo">
+        <input type="file" name="foto">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!-- Exibir animais perdidos semelhantes -->
+    <div id="semelhantes"></div>
+
+    <script>
+        $('#animal-form').submit(function(event) {
+         event.preventDefault();
+         var formData = new FormData(this);
+
+        $.ajax({
+            url: '/enviar-animal-perdido/',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+            $('#semelhantes').html(response);
+            }
+        });
+});
+
+    </script>
+</body>
+</html>

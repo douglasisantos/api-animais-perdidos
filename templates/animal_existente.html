@@ -1,0 +1,19 @@
+<!-- templates/detection_api/animal_existente.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Existente</title>
+</head>
+<body>
+    <h1>Animal com características semelhantes já existe:</h1>
+    <ul>
+        {% for animal in animais %}
+            <li>Espécie: {{ animal.especie }}, Cor: {{ animal.cor }}, Idade: {{ animal.idade }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'enviar_animal_perdido' %}">Voltar</a>
+</body>
+</html>

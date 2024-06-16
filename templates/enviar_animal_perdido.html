@@ -1,0 +1,27 @@
+<!-- templates/detection_api/enviar_animal_perdido.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Animal Perdido</title>
+</head>
+<body>
+    <h1>Enviar Animal Perdido</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!-- Exibir animais perdidos semelhantes -->
+    {% if animais_perdidos_semelhantes %}
+    <h2>Animais Perdidos Semelhantes</h2>
+    <ul>
+        {% for animal in animais_perdidos_semelhantes %}
+        <li>{{ animal.nome }} - {{ animal.tipo }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

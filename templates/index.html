@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página Inicial</title>
+</head>
+<body>
+    <h1>Animais Perdidos</h1>
+    <ul>
+        {% for animal in animais_perdidos %}
+        <li>
+            <h3>{{ animal.nome }}</h3>
+            <p>Raça: {{ animal.raca }}</p>
+            <p>Tipo: {{ animal.tipo }}</p>
+            {% if animal.foto %}
+            <img src="{{ animal.foto.url }}" alt="{{ animal.nome }}">
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Botão para limpar os dados dos animais perdidos -->
+    <form action="{% url 'limpar_animais_perdidos' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Limpar Animais Perdidos</button>
+    </form>
+</body>
+</html>

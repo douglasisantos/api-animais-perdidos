@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de Animal Perdido</title>
+</head>
+<body>
+    <h1>Envio de Animal Perdido</h1>
+    <p>O animal perdido foi enviado com sucesso!</p>
+
+    <!-- Exibir animais perdidos semelhantes -->
+    {% if animais_perdidos_semelhantes %}
+    <h2>Animais Perdidos Semelhantes</h2>
+    {% for animal in animais_perdidos_semelhantes %}
+    <div>
+        <img src="{{ animal.foto.url }}" alt="{{ animal.nome }}">
+        <p>Nome: {{ animal.nome }}</p>
+        <p>Tipo: {{ animal.tipo }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <!-- Exibir o novo animal perdido -->
+    {% if novo_animal %}
+    <h2>Novo Animal Perdido</h2>
+    <div>
+        <img src="{{ novo_animal.foto.url }}" alt="{{ novo_animal.nome }}">
+        <p>Nome: {{ novo_animal.nome }}</p>
+        <p>Raça: {{ novo_animal.raca }}</p>
+        <p>Tipo: {{ novo_animal.tipo }}</p>
+    </div>
+    {% endif %}
+
+    <a href="{% url 'enviar_animal_perdido' %}">Enviar outro animal perdido</a>
+</body>
+</html>
