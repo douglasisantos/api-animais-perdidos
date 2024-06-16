@@ -30,13 +30,22 @@ Para utilizar o projeto, siga estas etapas:
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/meu-projeto-yolo.git
+   git clone https://github.com/douglasisantos/api-animais-perdidos.git
    cd meu-projeto-yolo
 2. Instale as dependências necessárias. Certifique-se de estar usando um ambiente virtual Python:
     pip install -r requirements.txt
-3. Para utilizar a API de envio de animais perdidos, execute o servidor Django:
+3. Baixe os arquivos necessários para o YOLOv3:    
+    yolov3.cfg: (https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg)
+    yolov3.weights: (https://sourceforge.net/projects/yolov3.mirror/files/v8/yolov3.weights/download)
+    coco.names: https://github.com/pjreddie/darknet/blob/master/data/coco.names
+
+4. Instale o OpenCV separadamente, pois pode não estar incluído no requirements.txt:Instale o OpenCV separadamente, pois pode não estar incluído no requirements.txt:
+
+    pip install opencv-python
+
+5. Para utilizar a API de envio de animais perdidos, execute o servidor Django:
     python manage.py runserver
-4. Acesse a API em http://localhost:8000/enviar-animal-perdido-api/ para enviar dados de animais perdidos.
+6. Acesse a API em http://localhost:8000/enviar-animal-perdido-api/ para enviar dados de animais perdidos.
 
 Se você deseja contribuir com este projeto, siga estas etapas:
 
