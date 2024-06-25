@@ -31,6 +31,43 @@ def limpar_animais_perdidos(request):
         return HttpResponse('A solicitação deve ser do tipo POST.')  
 
 
+
+
+
+
+
+# class EnviarAnimalPerdidoAPIView(APIView):
+#     def post(self, request, format=None):
+#         form = AnimalPerdidoForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             nome = form.cleaned_data['nome']
+#             tipo = form.cleaned_data['tipo']
+#             raca = form.cleaned_data['raca']
+#             foto = form.cleaned_data['foto']
+
+#             # Chama a função para detectar objetos na imagem
+#             resultados = detectar_objetos(foto)
+
+#             # Salva o novo animal perdido no banco de dados
+#             novo_animal = AnimalPerdido(nome=nome, tipo=tipo,raca=raca, descricao_objetos=resultados['descricao_objetos'], foto=foto)
+#             novo_animal.save()
+
+#             # Busca animais perdidos semelhantes com base na descrição dos objetos
+#             animais_perdidos_semelhantes = AnimalPerdido.objects.filter(
+#                 Q(descricao_objetos__contains=resultados['descricao_objetos']) |
+#                 Q(tipo=tipo) |
+#                 Q(raca=raca)
+#             ).exclude(id=novo_animal.id)
+
+#             # Serializa os animais perdidos semelhantes
+#             serializer = AnimalPerdidoSerializer(animais_perdidos_semelhantes, many=True)
+
+#             # Retorna para a resposta da API com a lista de animais semelhantes
+#             return Response({'novo_animal': AnimalPerdidoSerializer(novo_animal).data, 'animais_perdidos_semelhantes': serializer.data})
+
+#         return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 def enviar_animal_perdido(request):
     if request.method == 'POST':
         form = AnimalPerdidoForm(request.POST, request.FILES)

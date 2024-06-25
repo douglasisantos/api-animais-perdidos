@@ -113,7 +113,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "treinamento",
 ]
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'treinamento')
 MEDIA_URL = '/media/'
 
 # Diretório específico para salvar as imagens enviadas
